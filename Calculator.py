@@ -1,5 +1,6 @@
 from tkinter import *
 from PySide2.QtWidgets import *
+from PySide2.QtGui import QIcon
 
 class Main_Menu:
     def __init__(self):
@@ -9,7 +10,6 @@ class Main_Menu:
         self.window.setWindowTitle("Pokemon Calculator v1.0")
         self.damage_button = QPushButton("伤害", self.window)
         self.damage_button.move(120, 100)
-        # self.damage_button.clicked.connect(self.damageClicked)
         self.range_button = QPushButton("打击面", self.window)
         self.range_button.move(120, 160)
 
@@ -37,10 +37,13 @@ class Damage_Calculator:
 
 def start_main():
     app = QApplication(sys.argv)
+    app.setWindowIcon(QIcon("icon/pokemonBall.jpeg"))
     main_menu = Main_Menu()
     damage_window = Damage_Calculator()
+
     main_menu.damage_button.clicked.connect(main_menu.close_menu)
     main_menu.damage_button.clicked.connect(damage_window.start_damage)
+
     main_menu.window.show()
     app.exec_()
     sys.exit(app.exec_())
